@@ -102,8 +102,8 @@
         <label>Tipo de reparación:</label>
         <select id="servicio">
             <option value="suela">Solo cambio de suela</option>
-            <option value="puntera_suela">Puntera + suela</option>
-            <option value="restauracion">Restauración completa</option>
+            <option value="1puntera_suela">Puntera de una gata + suela</option>
+            <option value="2punteras_suela">Puntera de dos gatas + suela</option>
         </select>
 
         <br><br>
@@ -113,6 +113,13 @@
             <option value="Stick plus">Stick plus</option>
             <option value="Stick evolution">Stick evolution</option>
             <option value="Stick zero">Stick zero</option>
+        </select>
+
+        <br><br>
+
+         <label>Lugar de recolección:</label>
+        <select id="lugar_recoleccion">
+            <option value="Mesa Rim">Mesa Rim, San Diego</option>
         </select>
 
         <br><br>
@@ -138,22 +145,29 @@
 function generarPedido() {
     const servicio = document.getElementById("servicio").value;
     const suela = document.getElementById("tipo_suela").value;
+    const lugarRecoleccion = document.getElementById("lugar_recoleccion").value;
+
 
     let textoServicio = "";
     let textoSuela = "";
+    let textoLugarRecoleccion = "";
 
     if (servicio === "suela") textoServicio = "Solo cambio de suela";
-    if (servicio === "puntera_suela") textoServicio = "Puntera + suela";
-    if (servicio === "restauracion") textoServicio = "Restauración completa";
+    if (servicio === "1puntera_suela") textoServicio = "Puntera de una gata + suela";
+    if (servicio === "2punteras_suela") textoServicio = "Puntera de dos gatas + suela";
 
     if (suela === "Stick plus") textoSuela = "Stick plus";
     if (suela === "Stick evolution") textoSuela = "Stick evolution";
     if (suela === "Stick zero") textoSuela = "Stick zero";
+    
+    if (lugarRecoleccion === "Mesa Rim") textoLugarRecoleccion = "Mesa Rim, San Diego";
+
 
     document.getElementById("resumen").innerHTML = `
         <h3>Resumen de tu pedido</h3>
         <p><b>Servicio:</b> ${textoServicio}</p>
         <p><b>Tipo de suela:</b> ${textoSuela}</p>
+        <p><b>Lugar de recolección:</b> ${textoLugarRecoleccion}</p>
         <p>Revisa tu pedido antes de continuar.</p>
     `;
 }
